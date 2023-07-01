@@ -1,0 +1,30 @@
+# -- Environment name
+env: "dev"
+
+scaling:
+  # -- How many replicas to run
+  replicas: 3
+
+ingress:
+  domain: "gcs-web-server-example.breadnet.co.uk"
+  ipName: example-site
+  iap:
+    # -- Whether to enable IAP on the site
+    enabled: true
+    clientId: "replace me"
+    # -- IAP Client Secret
+    clientSecret: "replace me"
+
+googleCloud:
+  serviceAccount: gcs-web-server-example
+  # -- Project name does not have any env magic on it. Assumes everything is under one project
+  project: gcs-web-server-example
+  # -- Bucket is in the format of {bucket-name}-{env}
+  bucketName: gcs-web-server-example
+
+  logging:
+    # -- Should logging be enabled
+    enabled: false
+    # -- What percentage of the logs should be stored and indexed in GCP
+    sampleRate: "0.1"
+

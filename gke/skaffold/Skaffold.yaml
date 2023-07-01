@@ -1,0 +1,19 @@
+apiVersion: skaffold/v4beta5
+kind: Config
+metadata:
+  name: gcs-web-server-example
+deploy:
+  helm:
+      releases:
+      - name: gcs-web-server-example
+        createNamespace: true
+        namespace: gcs-web-server-example-dev
+        remoteChart: gcs-web-server/gcs-web-server
+        upgradeOnChange: true
+        setValues:
+          image.tag: 4946052
+          googleCloud.serviceAccount: gcs-web-server-example
+          googleCloud.project: gcs-web-server-example
+          googleCloud.bucketName: gcs-web-server-example
+          ingress.iap.clientId: ""
+          ingress.iap.clientSecret: ""
